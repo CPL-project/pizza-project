@@ -1,0 +1,713 @@
+#include <iostream>
+#include <conio.h>
+#include <iomanip>
+#include <string>
+#include <stdlib.h>
+
+using namespace std;
+
+int main()
+{
+    string flavorOutput="", pSizeOutput="", packOutput="", pastaOutput="", beverageOutput="";
+    char flavor, pSize, answerC, answerP, answerB, cPack, cPasta, cBeverage;
+    int pPrice, pizzaQuantity, packQuantity, beverageQuantity, pastaQuantity, packPrice, pastaPrice, beveragePrice,
+        fPizza, fChicken, fPasta, fBeverage, payment, total, change, thou, fiveH, twoH, oneH, fifty, twenty, ten, five;
+
+    cout << setw(50) << "Welcome to A&J's Pizza!" << endl << endl;
+    cout << " ----------------------------------------------------------------------" << endl;
+
+    //menu
+    cout << " Flavors" << setw(33) << "Regular" << setw(12) << "Large" << setw(12) << "Party" << endl;
+    cout << " ----------------------------------------------------------------------" << endl;
+    cout << " [A] Cheesy Overload" << setw(19) << "174" << setw(13) << "300" << setw(12) << "465" << endl;
+    cout << " [B] Hawaiian Delight" << setw(18) << "236" << setw(13) << "370" << setw(12) << "542" << endl;
+    cout << " [C] Pepperoni" << setw(25) << "236" << setw(13) << "370" << setw(12) << "542" << endl;
+    cout << " [D] Meaty Supreme" << setw(21) << "249" << setw(13) << "424" << setw(12) << "567" << endl;
+    cout << " [E] Make Your Own Pizza!" << setw(42) << "-Depends on the size and toppings-" << endl << endl;
+    cout << " ----------------------------------------------------------------------" << endl;
+
+    //user input
+    cout << "\n Choose your Pizza Flavor [A, B, C, D, E] : ";
+    cin >> flavor;
+    cout << " Choose your Pizza Size [R, L, P] : ";
+    cin >> pSize;
+    cout << " Quantity: ";
+    cin >> pizzaQuantity;
+
+    if(pizzaQuantity<1)
+    {
+        cout << " Invalid Pizza Quantity Input.";
+        getch();
+        exit(1);
+    }
+
+    //verifies flavor, size, and price
+    switch(flavor)
+    {
+        case 'A':
+            flavorOutput = "Cheesy Overload";
+            if (pSize=='R')
+            {
+                pSizeOutput = "Regular";
+                pPrice = 174;
+            }
+            else if (pSize=='L')
+            {
+                pSizeOutput = "Large";
+                pPrice = 300;
+            }
+            else if (pSize=='P')
+            {
+                pSizeOutput = "Party";
+                pPrice = 465;
+            }
+            else
+            {
+                cout << " Invalid size input.";
+                getch();
+                exit(1);
+            }
+            break;
+
+        case 'B':
+            flavorOutput = "Hawaiian Delight";
+            if (pSize=='R')
+            {
+                pSizeOutput = "Regular";
+                pPrice = 236;
+            }
+            else if (pSize=='L')
+            {
+                pSizeOutput = "Large";
+                pPrice = 370;
+            }
+            else if (pSize=='P')
+            {
+                pSizeOutput = "Party";
+                pPrice = 542;
+            }
+            else
+            {
+                cout << " Invalid size input.";
+                getch();
+                exit(1);
+            }
+            break;
+
+        case 'C':
+            flavorOutput = "Pepperoni";
+            if (pSize=='R')
+            {
+                pSizeOutput = "Regular";
+                pPrice = 236;
+            }
+            else if (pSize=='L')
+            {
+                pSizeOutput = "Large";
+                pPrice = 370;
+            }
+            else if (pSize=='P')
+            {
+                pSizeOutput = "Party";
+                pPrice = 542;
+            }
+            else
+            {
+                cout << " Invalid size input.";
+                getch();
+                exit(1);
+            }
+            break;
+
+        case 'D':
+            flavorOutput = "Meaty Supreme";
+            if (pSize=='R')
+            {
+                pSizeOutput = "Regular";
+                pPrice = 249;
+            }
+            else if (pSize=='L')
+            {
+                pSizeOutput = "Large";
+                pPrice = 424;
+            }
+            else if (pSize=='P')
+            {
+                pSizeOutput = "Party";
+                pPrice = 567;
+            }
+            else
+            {
+                cout << " Invalid size input.";
+                getch();
+                exit(1);
+            }
+            break;
+
+        case 'E':
+            //Eto yung sayo Jeed tska yung start. Saka na natin gawin breakdown :)
+
+        default:
+            cout << " Pizza flavor invalid. Please try again." << endl;
+            getch();
+            exit(1);
+    }
+
+    cout << "\n You ordered " << pizzaQuantity << " " << pSizeOutput << " size " << flavorOutput << " which is P" << pPrice << " each." << endl;
+        fPizza = pPrice*pizzaQuantity;
+    cout << " Total for pizza is P" << fPizza << "." << endl << endl;
+
+    //Add Chicken
+    cout << " Would you like to add some Chicken(Y/N)? ";
+    cin >> answerC;
+
+    if (answerC=='Y') //Add Chicken to Pizza
+    {
+        cout << " ---------------------------------------------------------------- " << endl;
+        cout << " Name" << setw(32) << "Quantity" << setw(19) << "Price" << endl;
+        cout << " ---------------------------------------------------------------- " << endl;
+        cout << " [A]Solo Pack" << setw(20) << "3" << setw(22) << "280" << endl;
+        cout << " [B]Family Pack" << setw(18) << "5" << setw(22) << "454" << endl;
+        cout << " [C]Barkada Pack" << setw(17) << "7" << setw(22) << "620" << endl;
+        cout << " [D]Party Pack" << setw(19) << "12" << setw(22) << "980" << endl;
+        cout << " ---------------------------------------------------------------- " << endl << endl;
+
+        cout << " Choose your Pack [A, B, C, D] : ";
+        cin >> cPack;
+        cout << " Quantity(per pack): ";
+        cin >> packQuantity;
+
+        switch(cPack)
+        {
+            case 'A':
+                packOutput = "Solo Pack";
+                packPrice = 280;
+                break;
+
+            case 'B':
+                packOutput = "Family Pack";
+                packPrice = 454;
+                break;
+
+            case 'C':
+                packOutput = "Barkada Pack";
+                packPrice = 620;
+                break;
+
+            case 'D':
+                packOutput = "Party Pack";
+                packPrice = 980;
+                break;
+
+            default:
+                cout << " Invalid input." << endl;
+                getch();
+                exit(1);
+        }
+        cout << "\n You added " << packQuantity << " " << packOutput << " worth P" << packPrice << " per pack." << endl;
+            fChicken = packPrice*packQuantity;
+        cout << " Total for chicken is P" << fChicken << "." << endl << endl;
+
+        //Add Pasta
+        cout << " Would you like to add some Pasta(Y/N)? ";
+        cin >> answerP;
+
+        if(answerP=='Y') // Add Pasta to Chicken and Pizza
+        {
+            cout << " ---------------------------------------------------- " << endl;
+            cout << " Name" << setw(30) << "Price" << endl;
+            cout << " ---------------------------------------------------- " << endl;
+            cout << " [A]Spaghetti" << setw(21) << "260" << endl;
+            cout << " [B]Chicken Alfredo" << setw(15) << "265" << endl;
+            cout << " [C]Chalie Chicken" << setw(16) << "280" << endl;
+            cout << " [D]Aglio Olio" << setw(20) << "310" << endl;
+            cout << " ---------------------------------------------------- " << endl << endl;
+
+            cout << " Choose your Pasta [A, B, C, D] : ";
+            cin >> cPasta;
+            cout << " Quantity: ";
+            cin >> pastaQuantity;
+
+            switch(cPasta)
+            {
+                case 'A':
+                    pastaOutput = "Spaghetti";
+                    pastaPrice = 260;
+                    break;
+
+                case 'B':
+                    pastaOutput = "Chicken Alfredo";
+                    pastaPrice = 265;
+                    break;
+
+                case 'C':
+                    pastaOutput = "Charlie Chicken";
+                    pastaPrice = 280;
+                    break;
+
+                case 'D':
+                    pastaOutput = "Aglio Olio";
+                    pastaPrice = 310;
+                    break;
+
+                default:
+                    cout << " Invalid input." << endl;
+                    getch();
+                    exit(1);
+            }
+            cout << "\n You added " << pastaQuantity << " " << pastaOutput << " worth P" << pastaPrice << "." << endl;
+                fPasta = pastaPrice*pastaQuantity;
+            cout << " Total for pasta is P" << fPasta << "." << endl << endl;
+
+            //Add Beverage
+            cout << " Would you like to add some Beverage(Y/N)? ";
+            cin >> answerB;
+
+            if (answerB=='Y') //Add Beverage to Pasta, Chicken, and Pizza
+            {
+                cout << " ---------------------------------------------------- " << endl;
+                cout << " Name" << setw(32) << "Price" << endl;
+                cout << " ---------------------------------------------------- " << endl;
+                cout << " [A]Bottled Mineral Water" << setw(11) << "20" << endl;
+                cout << " [B]Canned Soda" << setw(21) << "25" << endl;
+                cout << " [C]Bottled Iced Tea" << setw(16) << "25" << endl;
+                cout << " [D]Soda (1.5L)" << setw(21) << "85" << endl;
+                cout << " ---------------------------------------------------- " << endl << endl;
+
+                cout << " Choose your Beverage [A, B, C, D] : ";
+                cin >> cBeverage;
+                cout << " Quantity: ";
+                cin >> beverageQuantity;
+
+                switch(cBeverage)
+                {
+                    case 'A':
+                        beverageOutput = "Bottled Mineral Water";
+                        beveragePrice = 20;
+                        break;
+
+                    case 'B':
+                        beverageOutput = "Canned Soda";
+                        beveragePrice = 25;
+                        break;
+
+                    case 'C':
+                        beverageOutput = "Bottled Iced Tea";
+                        beveragePrice = 25;
+                        break;
+
+                    case 'D':
+                        beverageOutput = "Soda (1.5L)";
+                        beveragePrice = 85;
+                        break;
+
+                    default:
+                        cout << " Invalid input." << endl;
+                        getch();
+                        exit(1);
+                }
+                cout << "\n You added " << beverageQuantity << " " << beverageOutput << " worth P" << beveragePrice << "." << endl;
+                    fBeverage = beveragePrice*beverageQuantity;
+                cout << " Total for beverage is P" << fBeverage << "." << endl << endl;
+
+                cout << " -------------------------------------------------------------------- " << endl;
+                cout << " Quantity" << setw(10) << "Name" << setw(25) << "Price" << setw(25) << "Total Price" << endl;
+                cout << " -------------------------------------------------------------------- " << endl;
+                cout << setw(6) << pizzaQuantity << setw(24) << flavorOutput << setw(13) << pPrice << setw(22) << fPizza << endl;
+                cout << setw(6) << packQuantity << setw(24) << packOutput << setw(13) << packPrice << setw(22) << fChicken << endl;
+                cout << setw(6) << pastaQuantity << setw(24) << pastaOutput << setw(13) << pastaPrice << setw(22) << fPasta << endl;
+                cout << setw(6) << beverageQuantity << setw(24) << beverageOutput << setw(13) << beveragePrice << setw(22) << fBeverage << endl;
+                cout << " -------------------------------------------------------------------- " << endl;
+                    total = fPizza+fChicken+fPasta+fBeverage;
+                cout << setw(64) << "Total = P" << total;
+                }
+
+            else if (answerB=='N') //Not add Beverage to Pasta, Chicken, and Pizza
+            {
+                cout << " -------------------------------------------------------------------- " << endl;
+                cout << " Quantity" << setw(10) << "Name" << setw(25) << "Price" << setw(25) << "Total Price" << endl;
+                cout << " -------------------------------------------------------------------- " << endl;
+                cout << setw(6) << pizzaQuantity << setw(24) << flavorOutput << setw(13) << pPrice << setw(22) << fPizza << endl;
+                cout << setw(6) << packQuantity << setw(24) << packOutput << setw(13) << packPrice << setw(22) << fChicken << endl;
+                cout << setw(6) << pastaQuantity << setw(24) << pastaOutput << setw(13) << pastaPrice << setw(22) << fPasta << endl;
+                cout << " -------------------------------------------------------------------- " << endl;
+                    total = fPizza+fChicken+fPasta;
+                cout << setw(64) << "Total = P" << total;
+            }
+            else
+            {
+                cout << "Invalid input." << endl;
+            }
+        }
+        else if (answerP=='N') //Not add Pasta to Chicken and Pizza
+        {
+            //Add Beverage
+            cout << " Would you like to add some Beverage(Y/N)? ";
+            cin >> answerB;
+
+            if (answerB=='Y') //Add Beverage to Chicken and Pizza
+            {
+                cout << " ---------------------------------------------------- " << endl;
+                cout << " Name" << setw(32) << "Price" << endl;
+                cout << " ---------------------------------------------------- " << endl;
+                cout << " [A]Bottled Mineral Water" << setw(11) << "20" << endl;
+                cout << " [B]Canned Soda" << setw(21) << "25" << endl;
+                cout << " [C]Bottled Iced Tea" << setw(16) << "25" << endl;
+                cout << " [D]Soda (1.5L)" << setw(21) << "85" << endl;
+                cout << " ---------------------------------------------------- " << endl << endl;
+
+                cout << " Choose your Beverage [A, B, C, D] : ";
+                cin >> cBeverage;
+                cout << " Quantity: ";
+                cin >> beverageQuantity;
+
+                switch(cBeverage)
+                {
+                    case 'A':
+                        beverageOutput = "Bottled Mineral Water";
+                        beveragePrice = 20;
+                        break;
+
+                    case 'B':
+                        beverageOutput = "Canned Soda";
+                        beveragePrice = 25;
+                        break;
+
+                    case 'C':
+                        beverageOutput = "Bottled Iced Tea";
+                        beveragePrice = 25;
+                        break;
+
+                    case 'D':
+                        beverageOutput = "Soda (1.5L)";
+                        beveragePrice = 85;
+                        break;
+
+                    default:
+                        cout << " Invalid input." << endl;
+                        getch();
+                        exit(1);
+                }
+                cout << "\n You added " << beverageQuantity << " " << beverageOutput << " worth P" << beveragePrice << "." << endl;
+                    fBeverage = beveragePrice*beverageQuantity;
+                cout << " Total for beverage is P" << fBeverage << "." << endl << endl;
+
+                cout << " -------------------------------------------------------------------- " << endl;
+                cout << " Quantity" << setw(10) << "Name" << setw(25) << "Price" << setw(25) << "Total Price" << endl;
+                cout << " -------------------------------------------------------------------- " << endl;
+                cout << setw(6) << pizzaQuantity << setw(24) << flavorOutput << setw(13) << pPrice << setw(22) << fPizza << endl;
+                cout << setw(6) << packQuantity << setw(24) << packOutput << setw(13) << packPrice << setw(22) << fChicken << endl;
+                cout << setw(6) << pastaQuantity << setw(24) << pastaOutput << setw(13) << pastaPrice << setw(22) << fPasta << endl;
+                cout << setw(6) << beverageQuantity << setw(24) << beverageOutput << setw(13) << beveragePrice << setw(22) << fBeverage << endl;
+                cout << " -------------------------------------------------------------------- " << endl;
+                    total = fPizza+fChicken+fPasta+fBeverage;
+                cout << setw(64) << "Total = P" << total;
+                }
+
+            else if (answerB=='N') //Not add Beverage to Chicken and Pizza
+            {
+                cout << " -------------------------------------------------------------------- " << endl;
+                cout << " Quantity" << setw(10) << "Name" << setw(25) << "Price" << setw(25) << "Total Price" << endl;
+                cout << " -------------------------------------------------------------------- " << endl;
+                cout << setw(6) << pizzaQuantity << setw(24) << flavorOutput << setw(13) << pPrice << setw(22) << fPizza << endl;
+                cout << setw(6) << packQuantity << setw(24) << packOutput << setw(13) << packPrice << setw(22) << fChicken << endl;
+                cout << " -------------------------------------------------------------------- " << endl;
+                    total = fPizza+fChicken;
+                cout << setw(64) << "Total = P" << total;
+            }
+            else
+            {
+                cout << "Invalid input." << endl;
+            }
+
+        }
+        else
+        {
+            cout << " Invalid Input." << endl;
+        }
+    }
+    else if (answerC=='N')//Not add Chicken to Pizza
+    {
+        cout << " Would you like to add some Pasta(Y/N)? ";
+        cin >> answerP;
+
+        if(answerP=='Y')//Add Pasta to Pizza
+        {
+            cout << " ---------------------------------------------------- " << endl;
+            cout << " Name" << setw(30) << "Price" << endl;
+            cout << " ---------------------------------------------------- " << endl;
+            cout << " [A]Spaghetti" << setw(21) << "260" << endl;
+            cout << " [B]Chicken Alfredo" << setw(15) << "265" << endl;
+            cout << " [C]Chalie Chicken" << setw(16) << "280" << endl;
+            cout << " [D]Aglio Olio" << setw(20) << "310" << endl;
+            cout << " ---------------------------------------------------- " << endl << endl;
+
+            cout << " Choose your Pasta [A, B, C, D] : ";
+            cin >> cPasta;
+            cout << " Quantity: ";
+            cin >> pastaQuantity;
+
+            switch(cPasta)
+            {
+                case 'A':
+                    pastaOutput = "Spaghetti";
+                    pastaPrice = 260;
+                    break;
+
+                case 'B':
+                    pastaOutput = "Chicken Alfredo";
+                    pastaPrice = 265;
+                    break;
+
+                case 'C':
+                    pastaOutput = "Charlie Chicken";
+                    pastaPrice = 280;
+                    break;
+
+                case 'D':
+                    pastaOutput = "Aglio Olio";
+                    pastaPrice = 310;
+                    break;
+
+                default:
+                    cout << " Invalid input." << endl;
+                    getch();
+                    exit(1);
+            }
+            cout << "\n You added " << pastaQuantity << " " << pastaOutput << " worth P" << pastaPrice << "." << endl;
+                fPasta = pastaPrice*pastaQuantity;
+            cout << " Total for pasta is P" << fPasta << "." << endl << endl;
+
+            //Add Beverage
+            cout << " Would you like to add some Beverage(Y/N)? ";
+            cin >> answerB;
+
+            if (answerB=='Y')//Add Beverage to Pasta and Pizza
+            {
+                cout << " ---------------------------------------------------- " << endl;
+                cout << " Name" << setw(32) << "Price" << endl;
+                cout << " ---------------------------------------------------- " << endl;
+                cout << " [A]Bottled Mineral Water" << setw(11) << "20" << endl;
+                cout << " [B]Canned Soda" << setw(21) << "25" << endl;
+                cout << " [C]Bottled Iced Tea" << setw(16) << "25" << endl;
+                cout << " [D]Soda (1.5L)" << setw(21) << "85" << endl;
+                cout << " ---------------------------------------------------- " << endl << endl;
+
+                cout << " Choose your Beverage [A, B, C, D] : ";
+                cin >> cBeverage;
+                cout << " Quantity: ";
+                cin >> beverageQuantity;
+
+                switch(cBeverage)
+                {
+                    case 'A':
+                        beverageOutput = "Bottled Mineral Water";
+                        beveragePrice = 20;
+                        break;
+
+                    case 'B':
+                        beverageOutput = "Canned Soda";
+                        beveragePrice = 25;
+                        break;
+
+                    case 'C':
+                        beverageOutput = "Bottled Iced Tea";
+                        beveragePrice = 25;
+                        break;
+
+                    case 'D':
+                        beverageOutput = "Soda (1.5L)";
+                        beveragePrice = 85;
+                        break;
+
+                    default:
+                        cout << " Invalid input." << endl;
+                        getch();
+                        exit(1);
+                }
+                cout << "\n You added " << beverageQuantity << " " << beverageOutput << " worth P" << beveragePrice << "." << endl;
+                    fBeverage = beveragePrice*beverageQuantity;
+                cout << " Total for beverage is P" << fBeverage << "." << endl << endl;
+
+                cout << " -------------------------------------------------------------------- " << endl;
+                cout << " Quantity" << setw(10) << "Name" << setw(25) << "Price" << setw(25) << "Total Price" << endl;
+                cout << " -------------------------------------------------------------------- " << endl;
+                cout << setw(6) << pizzaQuantity << setw(24) << flavorOutput << setw(13) << pPrice << setw(22) << fPizza << endl;
+                cout << setw(6) << pastaQuantity << setw(24) << pastaOutput << setw(13) << pastaPrice << setw(22) << fPasta << endl;
+                cout << setw(6) << beverageQuantity << setw(24) << beverageOutput << setw(13) << beveragePrice << setw(22) << fBeverage << endl;
+                cout << " -------------------------------------------------------------------- " << endl;
+                    total = fPizza+fPasta+fBeverage;
+                cout << setw(64) << "Total = P" << total;
+                }
+
+            else if (answerB=='N')//Not add Beverage to Pasta and Pizza
+            {
+
+                cout << " -------------------------------------------------------------------- " << endl;
+                cout << " Quantity" << setw(10) << "Name" << setw(25) << "Price" << setw(25) << "Total Price" << endl;
+                cout << " -------------------------------------------------------------------- " << endl;
+                cout << setw(6) << pizzaQuantity << setw(24) << flavorOutput << setw(13) << pPrice << setw(22) << fPizza << endl;
+                cout << setw(6) << pastaQuantity << setw(24) << pastaOutput << setw(13) << pastaPrice << setw(22) << fPasta << endl;
+                cout << " -------------------------------------------------------------------- " << endl;
+                    total = fPizza+fPasta;
+                cout << setw(64) << "Total = P" << total;
+
+            }
+            else
+            {
+                cout << "Invalid input." << endl;
+            }
+        }
+        else if (answerP=='N')//Not add Pasta to Pizza
+        {
+            //Add Beverage
+            cout << " Would you like to add some Beverage(Y/N)? ";
+            cin >> answerB;
+
+            if (answerB=='Y')//Add Beverage to Pizza
+            {
+                cout << " ---------------------------------------------------- " << endl;
+                cout << " Name" << setw(32) << "Price" << endl;
+                cout << " ---------------------------------------------------- " << endl;
+                cout << " [A]Bottled Mineral Water" << setw(11) << "20" << endl;
+                cout << " [B]Canned Soda" << setw(21) << "25" << endl;
+                cout << " [C]Bottled Iced Tea" << setw(16) << "25" << endl;
+                cout << " [D]Soda (1.5L)" << setw(21) << "85" << endl;
+                cout << " ---------------------------------------------------- " << endl << endl;
+
+                cout << " Choose your Beverage [A, B, C, D] : ";
+                cin >> cBeverage;
+                cout << " Quantity: ";
+                cin >> beverageQuantity;
+
+                switch(cBeverage)
+                {
+                    case 'A':
+                        beverageOutput = "Bottled Mineral Water";
+                        beveragePrice = 20;
+                        break;
+
+                    case 'B':
+                        beverageOutput = "Canned Soda";
+                        beveragePrice = 25;
+                        break;
+
+                    case 'C':
+                        beverageOutput = "Bottled Iced Tea";
+                        beveragePrice = 25;
+                        break;
+
+                    case 'D':
+                        beverageOutput = "Soda (1.5L)";
+                        beveragePrice = 85;
+                        break;
+
+                    default:
+                        cout << " Invalid input." << endl;
+                        getch();
+                        exit(1);
+                }
+                cout << "\n You added " << beverageQuantity << " " << beverageOutput << " worth P" << beveragePrice << "." << endl;
+                    fBeverage = beveragePrice*beverageQuantity;
+                cout << " Total for beverage is P" << fBeverage << "." << endl << endl;
+
+                cout << " -------------------------------------------------------------------- " << endl;
+                cout << " Quantity" << setw(10) << "Name" << setw(25) << "Price" << setw(25) << "Total Price" << endl;
+                cout << " -------------------------------------------------------------------- " << endl;
+                cout << setw(6) << pizzaQuantity << setw(24) << flavorOutput << setw(13) << pPrice << setw(22) << fPizza << endl;
+                cout << setw(6) << beverageQuantity << setw(24) << beverageOutput << setw(13) << beveragePrice << setw(22) << fBeverage << endl;
+                cout << " -------------------------------------------------------------------- " << endl;
+                    total = fPizza+fBeverage;
+                cout << setw(64) << "Total = P" << total;
+                }
+
+            else if (answerB=='N')//Not add Beverage to Pizza
+            {
+                cout << " -------------------------------------------------------------------- " << endl;
+                cout << " Quantity" << setw(10) << "Name" << setw(25) << "Price" << setw(25) << "Total Price" << endl;
+                cout << " -------------------------------------------------------------------- " << endl;
+                cout << setw(6) << pizzaQuantity << setw(24) << flavorOutput << setw(13) << pPrice << setw(22) << fPizza << endl;
+                cout << " -------------------------------------------------------------------- " << endl;
+                    total = fPizza;
+                cout << setw(64) << "Total = P" << total;
+            }
+            else
+            {
+                cout << " Invalid input." << endl;
+            }
+        }
+        else
+        {
+            cout << " Invalid Input." << endl;
+        }
+    }
+    else
+    {
+        cout << " Invalid Input." << endl;
+    }
+
+    cout << "\n Enter amount of payment = P";
+    cin >> payment;
+
+    if (payment < total)
+    {
+        cout << " Not enough payment." << endl;
+        exit(1);
+    }
+
+    else
+    {
+        change = payment-total;
+        cout << "\n Change = P" << change;
+
+        cout << "\n\n Money Breakdown: " << endl;
+
+        if (change>=1000)
+        {
+            change -= (thou = change/1000)*1000;
+            cout << " P1000" << setw(3) << "= " << thou << endl;
+        }
+        if (change>=500)
+        {
+            change -= (fiveH = change/500)*500;
+            cout << " P500" << setw(4) << "= " << fiveH << endl;
+        }
+        if(change>=200)
+        {
+            change -= (twoH = change/200)*200;
+            cout << " P200" << setw(4) << "= " << twoH << endl;
+        }
+        if(change>=100)
+        {
+            change -= (oneH = change/100)*100;
+            cout << " P100" << setw(4) << "= " << oneH << endl;
+        }
+        if(change>=50)
+        {
+            change -= (fifty = change/50)*50;
+            cout << " P50" << setw(5) << "= " << fifty << endl;
+        }
+        if(change>=20)
+        {
+            change -= (twenty = change/20)*20;
+            cout << " P20" << setw(5) << "= " << twenty << endl;
+        }
+        if(change>=10)
+        {
+            change -= (ten = change/10)*10;
+            cout << " P10" << setw(5) << "= " << ten << endl;
+        }
+        if(change>=5)
+        {
+            change -= (five = change/5)*5;
+            cout << " P5" << setw(6) << "= " << five << endl;
+        }
+        if(change>=1)
+        {
+            cout << " P1" << setw(6) << "= " << change << endl;
+        }
+    }
+
+    getch();
+    return 0;
+}
