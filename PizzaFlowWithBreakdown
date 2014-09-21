@@ -1,17 +1,17 @@
 #include <iostream>
-#include <conio.h>
 #include <iomanip>
 #include <string>
 #include <stdlib.h>
 
 using namespace std;
 
-int main()
+int main()//Sa case 'E' may problem. pinag iisipan ko pa kung pano :) medyo konti palang nababago ko. update nalang ako kung may nabago o nadagdag na ko.
 {
     string flavorOutput="", pSizeOutput="", packOutput="", pastaOutput="", beverageOutput="";
     char flavor, pSize, answerC, answerP, answerB, cPack, cPasta, cBeverage;
     int pPrice, pizzaQuantity, packQuantity, beverageQuantity, pastaQuantity, packPrice, pastaPrice, beveragePrice,
-        fPizza, fChicken, fPasta, fBeverage, payment, total, change, thou, fiveH, twoH, oneH, fifty, twenty, ten, five;
+        fPizza, fChicken, fPasta, fBeverage, payment, total, change, thou, fiveH, twoH, oneH, fifty, twenty, ten, five, t1,t2, t3, t4, topp;
+	int Beef, Peperroni, Ham, Pineapple, Bacon, Sausage, Olive, Mushroom;
 
     cout << setw(50) << "Welcome to A&J's Pizza!" << endl << endl;
     cout << " ----------------------------------------------------------------------" << endl;
@@ -23,7 +23,7 @@ int main()
     cout << " [B] Hawaiian Delight" << setw(18) << "236" << setw(13) << "370" << setw(12) << "542" << endl;
     cout << " [C] Pepperoni" << setw(25) << "236" << setw(13) << "370" << setw(12) << "542" << endl;
     cout << " [D] Meaty Supreme" << setw(21) << "249" << setw(13) << "424" << setw(12) << "567" << endl;
-    cout << " [E] Make Your Own Pizza!" << setw(42) << "-Depends on the size and toppings-" << endl << endl;
+    cout << " [E] Make Your Own Pizza!" << setw(42) << "-Depends on the size and toppings- 4 TOPPINGS ONLY -" << endl << endl;
     cout << " ----------------------------------------------------------------------" << endl;
 
     //user input
@@ -37,26 +37,24 @@ int main()
     if(pizzaQuantity<1)
     {
         cout << " Invalid Pizza Quantity Input.";
-        getch();
         exit(1);
     }
-
     //verifies flavor, size, and price
     switch(flavor)
     {
-        case 'A':
+		case 'A': case 'a':
             flavorOutput = "Cheesy Overload";
-            if (pSize=='R')
+            if (pSize=='R' || pSize=='r')
             {
                 pSizeOutput = "Regular";
                 pPrice = 174;
             }
-            else if (pSize=='L')
+            else if (pSize=='L' || pSize=='l')
             {
                 pSizeOutput = "Large";
                 pPrice = 300;
             }
-            else if (pSize=='P')
+            else if (pSize=='P' || pSize=='p')
             {
                 pSizeOutput = "Party";
                 pPrice = 465;
@@ -64,24 +62,23 @@ int main()
             else
             {
                 cout << " Invalid size input.";
-                getch();
                 exit(1);
             }
             break;
 
-        case 'B':
+		case 'B': case 'b' :
             flavorOutput = "Hawaiian Delight";
-            if (pSize=='R')
+            if (pSize=='R' || pSize=='r')
             {
                 pSizeOutput = "Regular";
                 pPrice = 236;
             }
-            else if (pSize=='L')
+            else if (pSize=='L' || pSize=='l')
             {
                 pSizeOutput = "Large";
                 pPrice = 370;
             }
-            else if (pSize=='P')
+            else if (pSize=='P' || pSize=='p')
             {
                 pSizeOutput = "Party";
                 pPrice = 542;
@@ -89,24 +86,23 @@ int main()
             else
             {
                 cout << " Invalid size input.";
-                getch();
                 exit(1);
             }
             break;
 
-        case 'C':
+		case 'C': case 'c' :
             flavorOutput = "Pepperoni";
-            if (pSize=='R')
+            if (pSize=='R' || pSize=='r')
             {
                 pSizeOutput = "Regular";
                 pPrice = 236;
             }
-            else if (pSize=='L')
+            else if (pSize=='L' || pSize=='l')
             {
                 pSizeOutput = "Large";
                 pPrice = 370;
             }
-            else if (pSize=='P')
+            else if (pSize=='P' || pSize=='p')
             {
                 pSizeOutput = "Party";
                 pPrice = 542;
@@ -114,24 +110,23 @@ int main()
             else
             {
                 cout << " Invalid size input.";
-                getch();
                 exit(1);
             }
             break;
 
-        case 'D':
+		case 'D': case 'd':
             flavorOutput = "Meaty Supreme";
-            if (pSize=='R')
+            if (pSize=='R' || pSize=='r')
             {
                 pSizeOutput = "Regular";
                 pPrice = 249;
             }
-            else if (pSize=='L')
+            else if (pSize=='L' || pSize=='l')
             {
                 pSizeOutput = "Large";
                 pPrice = 424;
             }
-            else if (pSize=='P')
+            else if (pSize=='P' || pSize=='p')
             {
                 pSizeOutput = "Party";
                 pPrice = 567;
@@ -139,22 +134,66 @@ int main()
             else
             {
                 cout << " Invalid size input.";
-                getch();
                 exit(1);
             }
             break;
 
-        case 'E':
-            //Eto yung sayo Jeed tska yung start. Saka na natin gawin breakdown :)
-
+		case 'E': case 'e':
+			system("cls");
+			cout<<"Toppings(same prize in any size of pizza)"<<endl<<endl;
+			cout<<"Beef = Php30\tPeperroni = Php20\tHam = Php30\nPineapple = Php20\tBacon = Php30\tSausage = Php30\nOlive = Php20\t"
+				<<"\tMushroom = Php20"<<endl;
+			Beef=30;
+			Peperroni=20;
+			Ham=30;
+			Pineapple=20;
+			Bacon=30;
+			Sausage=30;
+			Olive=20;
+			Mushroom=20;
+            cout<<"Choose 4 toppings only:"<<endl;
+			cout<<"1: ";
+			cin>>t1;
+			cout<<"2: ";
+			cin>>t2;
+			cout<<"3: ";
+			cin>>t3;
+			cout<<"4: ";
+			cin>>t4;
+			topp=t1+t2+t3+t4;
+			cout<<"The total of your toppings: "<<topp;
+			if (pSize=='R' || pSize=='r')
+            {
+                pSizeOutput = "Regular";
+                pPrice = 100;
+            }
+            else if (pSize=='L' || pSize=='l')
+            {
+                pSizeOutput = "Large";
+                pPrice = 200;
+            }
+            else if (pSize=='P' || pSize=='p')
+            {
+                pSizeOutput = "Party";
+                pPrice = 300;
+            }
+            else
+            {
+                cout << " Invalid size input.";
+                exit(1);
+            }
+			
+			break;
         default:
             cout << " Pizza flavor invalid. Please try again." << endl;
-            getch();
             exit(1);
     }
 
     cout << "\n You ordered " << pizzaQuantity << " " << pSizeOutput << " size " << flavorOutput << " which is P" << pPrice << " each." << endl;
-        fPizza = pPrice*pizzaQuantity;
+			fPizza = pPrice*pizzaQuantity;
+		if(flavor=='e' || flavor == 'E'){
+			fPizza = (pPrice+topp)*pizzaQuantity;
+		}
     cout << " Total for pizza is P" << fPizza << "." << endl << endl;
 
     //Add Chicken
@@ -163,6 +202,7 @@ int main()
 
     if (answerC=='Y') //Add Chicken to Pizza
     {
+		system("cls");
         cout << " ---------------------------------------------------------------- " << endl;
         cout << " Name" << setw(32) << "Quantity" << setw(19) << "Price" << endl;
         cout << " ---------------------------------------------------------------- " << endl;
@@ -201,7 +241,6 @@ int main()
 
             default:
                 cout << " Invalid input." << endl;
-                getch();
                 exit(1);
         }
         cout << "\n You added " << packQuantity << " " << packOutput << " worth P" << packPrice << " per pack." << endl;
@@ -214,6 +253,7 @@ int main()
 
         if(answerP=='Y') // Add Pasta to Chicken and Pizza
         {
+			system("cls");
             cout << " ---------------------------------------------------- " << endl;
             cout << " Name" << setw(30) << "Price" << endl;
             cout << " ---------------------------------------------------- " << endl;
@@ -252,7 +292,6 @@ int main()
 
                 default:
                     cout << " Invalid input." << endl;
-                    getch();
                     exit(1);
             }
             cout << "\n You added " << pastaQuantity << " " << pastaOutput << " worth P" << pastaPrice << "." << endl;
@@ -265,6 +304,7 @@ int main()
 
             if (answerB=='Y') //Add Beverage to Pasta, Chicken, and Pizza
             {
+				system("cls");
                 cout << " ---------------------------------------------------- " << endl;
                 cout << " Name" << setw(32) << "Price" << endl;
                 cout << " ---------------------------------------------------- " << endl;
@@ -303,7 +343,6 @@ int main()
 
                     default:
                         cout << " Invalid input." << endl;
-                        getch();
                         exit(1);
                 }
                 cout << "\n You added " << beverageQuantity << " " << beverageOutput << " worth P" << beveragePrice << "." << endl;
@@ -385,7 +424,6 @@ int main()
 
                     default:
                         cout << " Invalid input." << endl;
-                        getch();
                         exit(1);
                 }
                 cout << "\n You added " << beverageQuantity << " " << beverageOutput << " worth P" << beveragePrice << "." << endl;
@@ -471,7 +509,6 @@ int main()
 
                 default:
                     cout << " Invalid input." << endl;
-                    getch();
                     exit(1);
             }
             cout << "\n You added " << pastaQuantity << " " << pastaOutput << " worth P" << pastaPrice << "." << endl;
@@ -522,7 +559,6 @@ int main()
 
                     default:
                         cout << " Invalid input." << endl;
-                        getch();
                         exit(1);
                 }
                 cout << "\n You added " << beverageQuantity << " " << beverageOutput << " worth P" << beveragePrice << "." << endl;
@@ -604,7 +640,6 @@ int main()
 
                     default:
                         cout << " Invalid input." << endl;
-                        getch();
                         exit(1);
                 }
                 cout << "\n You added " << beverageQuantity << " " << beverageOutput << " worth P" << beveragePrice << "." << endl;
@@ -707,7 +742,5 @@ int main()
             cout << " P1" << setw(6) << "= " << change << endl;
         }
     }
-
-    getch();
     return 0;
 }
