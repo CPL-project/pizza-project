@@ -1,0 +1,20 @@
+cout << "\n ----------------------------------------------------------------------" << endl;
+cout << " Toppings" << setw(26) << "Regular" << setw(12) << "Large" << setw(12) << "Party" << endl;
+cout << " ----------------------------------------------------------------------" << endl;
+cout << " [A] Beef" << setw(23) << "15" << setw(13) << "20" << setw(12) << "25" << endl;
+cout << " [B] Bacon" << setw(22) << "15" << setw(13) << "20" << setw(12) << "25" << endl;
+cout << " [C] Sausage" << setw(20) << "15" << setw(13) << "20" << setw(12) << "25" << endl;
+cout << " [D] Ham" << setw(24) << "15" << setw(13) << "20" << setw(12) << "25" << endl;
+cout << " [E] Pepperoni" << setw(18) << "10" << setw(13) << "15" << setw(12) << "20" << endl;
+cout << " [F] Pineapple" << setw(18) << "10" << setw(13) << "15" << setw(12) << "20" << endl;
+cout << " [G] Olive" << setw(22) << "10" << setw(13) << "15" << setw(12) << "20" << endl;
+cout << " [H] Mushroom" << setw(19) << "10" << setw(13) << "15" << setw(12) << "20" << endl;
+cout << " ----------------------------------------------------------------------" << endl;
+
+//Dear Jeed, ginawan na kita ng Menu para sa toppings. Mwa! nagawa ko na pala yung first part na kulang. upload ko maya maya.
+
+//Tapos pala add mo to sa case E please =)) Para cutie. Labyu!
+
+cout << "Name your pizza [input without spaces] : ";
+cin >> pizzaName;
+flavorOutput = pizzaName;
