@@ -9,13 +9,50 @@ using namespace std;
 int main()
 {
     string flavorOutput="", pSizeOutput="", packOutput="", pastaOutput="", beverageOutput="";
-    char flavor, pSize, answerC, answerP, answerB, cPack, cPasta, cBeverage;
-    int pPrice, pizzaQuantity, packQuantity, beverageQuantity, pastaQuantity, packPrice, pastaPrice, beveragePrice, fPizza, fChicken, fPasta, fBeverage, payment, total, change;
+    char flavor, pSize, answerC, answerP, answerB, cPack, cPasta, cBeverage, done;
+    int pPrice, pizzaQuantity, packQuantity, beverageQuantity, pastaQuantity, packPrice, pastaPrice, beveragePrice, fPizza, fChicken, fPasta, fBeverage,
+        payment, total, change, regThou, regFiveHund, regTwoHund, regOneHund, regFifty, regTwenty, regTen, regFive, regOne, regTotal,
+        changeThou, changeFiveHund, changeTwoHund, changeOneHund, changeFifty, changeTwenty, changeTen, changeFive, changeOne;
 
+    cout << "\n Please input how many bills/coins the cashier have for each." << endl;
+    cout << "\n P1000" << setw(3) << "= ";
+    cin >> regThou;
+    cout << " P500" << setw(4) << "= ";
+    cin >> regFiveHund;
+    cout << " P200" << setw(4) << "= ";
+    cin >> regTwoHund;
+    cout << " P100" << setw(4) << "= ";
+    cin >> regOneHund;
+    cout << " P50" << setw(5) << "= ";
+    cin >> regFifty;
+    cout << " P20" << setw(5) << "= ";
+    cin >> regTwenty;
+    cout << " P10" << setw(5) << "= ";
+    cin >> regTen;
+    cout << " P5" << setw(6) << "= ";
+    cin >> regFive;
+    cout << " P1" << setw(6) << "= ";
+    cin >> regOne;
+
+    regTotal = (regThou*1000)+(regFiveHund*500)+(regTwoHund*200)+(regOneHund*100)+(regFifty*50)+(regTwenty*20)+(regTen*10)+(regFive*5)+(regOne*1);
+    cout << "\n Total cash on register = P" << regTotal << endl << endl;
+    /*cout << " Press 'x' to exit." << endl << " ";
+    cin >> done;
+    if(done=='x'||done=='X')
+    {
+        system("cls");
+    }
+    else
+    {
+        cout << " Invalid input." << endl;
+        getch();
+        exit(1);
+    }
+    */
     cout << setw(50) << "Welcome to A&J's Pizza!" << endl << endl;
-    cout << " ----------------------------------------------------------------------" << endl;
 
     //menu
+    cout << " ----------------------------------------------------------------------" << endl;
     cout << " Flavors" << setw(33) << "Regular" << setw(12) << "Large" << setw(12) << "Party" << endl;
     cout << " ----------------------------------------------------------------------" << endl;
     cout << " [A] Cheesy Overload" << setw(19) << "174" << setw(13) << "300" << setw(12) << "465" << endl;
@@ -33,22 +70,29 @@ int main()
     cout << " Quantity: ";
     cin >> pizzaQuantity;
 
+    if(pizzaQuantity<1)
+    {
+        cout << " Invalid Pizza Quantity Input.";
+        getch();
+        exit(1);
+    }
+
     //verifies flavor, size, and price
     switch(flavor)
     {
-        case 'A':
+        case 'A': case 'a':
             flavorOutput = "Cheesy Overload";
-            if (pSize=='R')
+            if (pSize=='R' || pSize=='r')
             {
                 pSizeOutput = "Regular";
                 pPrice = 174;
             }
-            else if (pSize=='L')
+            else if (pSize=='L'|| pSize=='l')
             {
                 pSizeOutput = "Large";
                 pPrice = 300;
             }
-            else if (pSize=='P')
+            else if (pSize=='P'|| pSize=='p')
             {
                 pSizeOutput = "Party";
                 pPrice = 465;
@@ -61,19 +105,19 @@ int main()
             }
             break;
 
-        case 'B':
+        case 'B': case 'b':
             flavorOutput = "Hawaiian Delight";
-            if (pSize=='R')
+            if (pSize=='R' || pSize=='r')
             {
                 pSizeOutput = "Regular";
                 pPrice = 236;
             }
-            else if (pSize=='L')
+            else if (pSize=='L'||pSize=='l')
             {
                 pSizeOutput = "Large";
                 pPrice = 370;
             }
-            else if (pSize=='P')
+            else if (pSize=='P'||pSize=='p')
             {
                 pSizeOutput = "Party";
                 pPrice = 542;
@@ -86,19 +130,19 @@ int main()
             }
             break;
 
-        case 'C':
+        case 'C': case 'c':
             flavorOutput = "Pepperoni";
-            if (pSize=='R')
+            if (pSize=='R'||pSize=='r')
             {
                 pSizeOutput = "Regular";
                 pPrice = 236;
             }
-            else if (pSize=='L')
+            else if (pSize=='L'||pSize=='l')
             {
                 pSizeOutput = "Large";
                 pPrice = 370;
             }
-            else if (pSize=='P')
+            else if (pSize=='P'||pSize=='p')
             {
                 pSizeOutput = "Party";
                 pPrice = 542;
@@ -111,19 +155,19 @@ int main()
             }
             break;
 
-        case 'D':
+        case 'D': case 'd':
             flavorOutput = "Meaty Supreme";
-            if (pSize=='R')
+            if (pSize=='R'||pSize=='r')
             {
                 pSizeOutput = "Regular";
                 pPrice = 249;
             }
-            else if (pSize=='L')
+            else if (pSize=='L'||pSize=='l')
             {
                 pSizeOutput = "Large";
                 pPrice = 424;
             }
-            else if (pSize=='P')
+            else if (pSize=='P'||pSize=='p')
             {
                 pSizeOutput = "Party";
                 pPrice = 567;
@@ -136,7 +180,7 @@ int main()
             }
             break;
 
-        case 'E':
+        case 'E': case 'e':
             //Eto yung sayo Jeed tska yung start. Saka na natin gawin breakdown :)
 
         default:
@@ -153,7 +197,7 @@ int main()
     cout << " Would you like to add some Chicken(Y/N)? ";
     cin >> answerC;
 
-    if (answerC=='Y') //Add Chicken to Pizza
+    if (answerC=='Y'||answerC=='y') //Add Chicken to Pizza
     {
         cout << " ---------------------------------------------------------------- " << endl;
         cout << " Name" << setw(32) << "Quantity" << setw(19) << "Price" << endl;
@@ -171,22 +215,22 @@ int main()
 
         switch(cPack)
         {
-            case 'A':
+            case 'A': case 'a':
                 packOutput = "Solo Pack";
                 packPrice = 280;
                 break;
 
-            case 'B':
+            case 'B': case 'b':
                 packOutput = "Family Pack";
                 packPrice = 454;
                 break;
 
-            case 'C':
+            case 'C': case 'c':
                 packOutput = "Barkada Pack";
                 packPrice = 620;
                 break;
 
-            case 'D':
+            case 'D': case 'd':
                 packOutput = "Party Pack";
                 packPrice = 980;
                 break;
@@ -204,7 +248,7 @@ int main()
         cout << " Would you like to add some Pasta(Y/N)? ";
         cin >> answerP;
 
-        if(answerP=='Y') // Add Pasta to Chicken and Pizza
+        if(answerP=='Y'||answerP=='y') // Add Pasta to Chicken and Pizza
         {
             cout << " ---------------------------------------------------- " << endl;
             cout << " Name" << setw(30) << "Price" << endl;
@@ -222,22 +266,22 @@ int main()
 
             switch(cPasta)
             {
-                case 'A':
+                case 'A': case 'a':
                     pastaOutput = "Spaghetti";
                     pastaPrice = 260;
                     break;
 
-                case 'B':
+                case 'B': case 'b':
                     pastaOutput = "Chicken Alfredo";
                     pastaPrice = 265;
                     break;
 
-                case 'C':
+                case 'C': case 'c':
                     pastaOutput = "Charlie Chicken";
                     pastaPrice = 280;
                     break;
 
-                case 'D':
+                case 'D': case 'd':
                     pastaOutput = "Aglio Olio";
                     pastaPrice = 310;
                     break;
@@ -252,10 +296,10 @@ int main()
             cout << " Total for pasta is P" << fPasta << "." << endl << endl;
 
             //Add Beverage
-            cout << " Would you like to add some beverage(Y/N)? ";
+            cout << " Would you like to add some Beverage(Y/N)? ";
             cin >> answerB;
 
-            if (answerB=='Y') //Add Beverage to Pasta, Chicken, and Pizza
+            if (answerB=='Y'||answerB=='y') //Add Beverage to Pasta, Chicken, and Pizza
             {
                 cout << " ---------------------------------------------------- " << endl;
                 cout << " Name" << setw(32) << "Price" << endl;
@@ -273,22 +317,22 @@ int main()
 
                 switch(cBeverage)
                 {
-                    case 'A':
+                    case 'A': case 'a':
                         beverageOutput = "Bottled Mineral Water";
                         beveragePrice = 20;
                         break;
 
-                    case 'B':
+                    case 'B': case 'b':
                         beverageOutput = "Canned Soda";
                         beveragePrice = 25;
                         break;
 
-                    case 'C':
+                    case 'C': case 'c':
                         beverageOutput = "Bottled Iced Tea";
                         beveragePrice = 25;
                         break;
 
-                    case 'D':
+                    case 'D': case 'd':
                         beverageOutput = "Soda (1.5L)";
                         beveragePrice = 85;
                         break;
@@ -314,7 +358,7 @@ int main()
                 cout << setw(64) << "Total = P" << total;
                 }
 
-            else if (answerB=='N') //Not add Beverage to Pasta, Chicken, and Pizza
+            else if (answerB=='N'||answerB=='n') //Not add Beverage to Pasta, Chicken, and Pizza
             {
                 cout << " -------------------------------------------------------------------- " << endl;
                 cout << " Quantity" << setw(10) << "Name" << setw(25) << "Price" << setw(25) << "Total Price" << endl;
@@ -331,13 +375,13 @@ int main()
                 cout << "Invalid input." << endl;
             }
         }
-        else if (answerP=='N') //Not add Pasta to Chicken and Pizza
+        else if (answerP=='N'||answerP=='n') //Not add Pasta to Chicken and Pizza
         {
             //Add Beverage
-            cout << " Would you like to add some beverage(Y/N)? ";
+            cout << " Would you like to add some Beverage(Y/N)? ";
             cin >> answerB;
 
-            if (answerB=='Y') //Add Beverage to Chicken and Pizza
+            if (answerB=='Y'||answerB=='y') //Add Beverage to Chicken and Pizza
             {
                 cout << " ---------------------------------------------------- " << endl;
                 cout << " Name" << setw(32) << "Price" << endl;
@@ -355,22 +399,22 @@ int main()
 
                 switch(cBeverage)
                 {
-                    case 'A':
+                    case 'A': case 'a':
                         beverageOutput = "Bottled Mineral Water";
                         beveragePrice = 20;
                         break;
 
-                    case 'B':
+                    case 'B': case 'b':
                         beverageOutput = "Canned Soda";
                         beveragePrice = 25;
                         break;
 
-                    case 'C':
+                    case 'C': case 'c':
                         beverageOutput = "Bottled Iced Tea";
                         beveragePrice = 25;
                         break;
 
-                    case 'D':
+                    case 'D': case 'd':
                         beverageOutput = "Soda (1.5L)";
                         beveragePrice = 85;
                         break;
@@ -396,7 +440,7 @@ int main()
                 cout << setw(64) << "Total = P" << total;
                 }
 
-            else if (answerB=='N') //Not add Beverage to Chicken and Pizza
+            else if (answerB=='N'||answerB=='n') //Not add Beverage to Chicken and Pizza
             {
                 cout << " -------------------------------------------------------------------- " << endl;
                 cout << " Quantity" << setw(10) << "Name" << setw(25) << "Price" << setw(25) << "Total Price" << endl;
@@ -418,12 +462,12 @@ int main()
             cout << " Invalid Input." << endl;
         }
     }
-    else if (answerC=='N')//Not add Chicken to Pizza
+    else if (answerC=='N'||answerC=='n')//Not add Chicken to Pizza
     {
         cout << " Would you like to add some Pasta(Y/N)? ";
         cin >> answerP;
 
-        if(answerP=='Y')//Add Pasta to Pizza
+        if(answerP=='Y'||answerP=='y')//Add Pasta to Pizza
         {
             cout << " ---------------------------------------------------- " << endl;
             cout << " Name" << setw(30) << "Price" << endl;
@@ -441,22 +485,22 @@ int main()
 
             switch(cPasta)
             {
-                case 'A':
+                case 'A': case 'a':
                     pastaOutput = "Spaghetti";
                     pastaPrice = 260;
                     break;
 
-                case 'B':
+                case 'B': case 'b':
                     pastaOutput = "Chicken Alfredo";
                     pastaPrice = 265;
                     break;
 
-                case 'C':
+                case 'C': case 'c':
                     pastaOutput = "Charlie Chicken";
                     pastaPrice = 280;
                     break;
 
-                case 'D':
+                case 'D': case 'd':
                     pastaOutput = "Aglio Olio";
                     pastaPrice = 310;
                     break;
@@ -471,10 +515,10 @@ int main()
             cout << " Total for pasta is P" << fPasta << "." << endl << endl;
 
             //Add Beverage
-            cout << " Would you like to add some beverage(Y/N)? ";
+            cout << " Would you like to add some Beverage(Y/N)? ";
             cin >> answerB;
 
-            if (answerB=='Y')//Add Beverage to Pasta and Pizza
+            if (answerB=='Y'||answerB=='y')//Add Beverage to Pasta and Pizza
             {
                 cout << " ---------------------------------------------------- " << endl;
                 cout << " Name" << setw(32) << "Price" << endl;
@@ -492,22 +536,22 @@ int main()
 
                 switch(cBeverage)
                 {
-                    case 'A':
+                    case 'A': case 'a':
                         beverageOutput = "Bottled Mineral Water";
                         beveragePrice = 20;
                         break;
 
-                    case 'B':
+                    case 'B': case 'b':
                         beverageOutput = "Canned Soda";
                         beveragePrice = 25;
                         break;
 
-                    case 'C':
+                    case 'C': case 'c':
                         beverageOutput = "Bottled Iced Tea";
                         beveragePrice = 25;
                         break;
 
-                    case 'D':
+                    case 'D': case 'd':
                         beverageOutput = "Soda (1.5L)";
                         beveragePrice = 85;
                         break;
@@ -532,7 +576,7 @@ int main()
                 cout << setw(64) << "Total = P" << total;
                 }
 
-            else if (answerB=='N')//Not add Beverage to Pasta and Pizza
+            else if (answerB=='N'||answerB=='n')//Not add Beverage to Pasta and Pizza
             {
 
                 cout << " -------------------------------------------------------------------- " << endl;
@@ -550,13 +594,13 @@ int main()
                 cout << "Invalid input." << endl;
             }
         }
-        else if (answerP=='N')//Not add Pasta to Pizza
+        else if (answerP=='N'||answerP=='n')//Not add Pasta to Pizza
         {
             //Add Beverage
-            cout << " Would you like to add some beverage(Y/N)? ";
+            cout << " Would you like to add some Beverage(Y/N)? ";
             cin >> answerB;
 
-            if (answerB=='Y')//Add Beverage to Pizza
+            if (answerB=='Y'||answerB=='y')//Add Beverage to Pizza
             {
                 cout << " ---------------------------------------------------- " << endl;
                 cout << " Name" << setw(32) << "Price" << endl;
@@ -574,22 +618,22 @@ int main()
 
                 switch(cBeverage)
                 {
-                    case 'A':
+                    case 'A': case 'a':
                         beverageOutput = "Bottled Mineral Water";
                         beveragePrice = 20;
                         break;
 
-                    case 'B':
+                    case 'B': case 'b':
                         beverageOutput = "Canned Soda";
                         beveragePrice = 25;
                         break;
 
-                    case 'C':
+                    case 'C': case 'c':
                         beverageOutput = "Bottled Iced Tea";
                         beveragePrice = 25;
                         break;
 
-                    case 'D':
+                    case 'D': case 'd':
                         beverageOutput = "Soda (1.5L)";
                         beveragePrice = 85;
                         break;
@@ -613,7 +657,7 @@ int main()
                 cout << setw(64) << "Total = P" << total;
                 }
 
-            else if (answerB=='N')//Not add Beverage to Pizza
+            else if (answerB=='N'||answerB=='n')//Not add Beverage to Pizza
             {
                 cout << " -------------------------------------------------------------------- " << endl;
                 cout << " Quantity" << setw(10) << "Name" << setw(25) << "Price" << setw(25) << "Total Price" << endl;
@@ -625,7 +669,7 @@ int main()
             }
             else
             {
-                cout << "Invalid input." << endl;
+                cout << " Invalid input." << endl;
             }
         }
         else
@@ -638,9 +682,9 @@ int main()
         cout << " Invalid Input." << endl;
     }
 
+    //Payment
     cout << "\n Enter amount of payment = P";
     cin >> payment;
-
     if (payment < total)
     {
         cout << " Not enough payment." << endl;
@@ -650,6 +694,283 @@ int main()
     {
         change = payment-total;
         cout << " Change = P" << change;
+        if(change>regTotal)
+        {
+            cout << "\n\n Sorry. We do not have enough money for your change." << endl;
+            cout << " Please enter a smaller amount: ";
+            cin >> payment;
+            change = payment-total;
+            cout << " Change = P" << change << endl;
+
+            if(change>regTotal)
+            {
+                cout << "\n Sorry. We really do not have enough money for your change." << endl;
+                getch();
+                exit(1);
+            }
+            else
+            {
+                cout << "\n Breakdown for change is = " << endl;
+
+                if(1000<=change)
+                {
+                    changeThou = change/1000;
+                    if(regThou<=changeThou)
+                    {
+                        cout << "\n P1000" << setw(3) << "= " << regThou << endl;
+                        change -=(regThou*1000);
+                    }
+                    else
+                    {
+                        cout << "\n P1000" << setw(3) << "= " << changeThou << endl;
+                        change -=(changeThou*1000);
+                    }
+                }
+                if(500<=change)
+                {
+                    changeFiveHund = change/500;
+                    if(regFiveHund<=changeFiveHund)
+                    {
+                        cout << " P500" << setw(4) << "= " << regFiveHund << endl;
+                        change -=(regFiveHund*500);
+                    }
+                    else
+                    {
+                        cout << " P500" << setw(4) << "= " << changeFiveHund << endl;
+                        change -=(changeFiveHund*500);
+                    }
+                }
+                if(200<=change)
+                {
+                    changeTwoHund = change/200;
+                    if(regTwoHund<=changeTwoHund)
+                    {
+                        cout << " P200" << setw(4) << "= " << regTwoHund << endl;
+                        change -=(regTwoHund*200);
+                    }
+                    else
+                    {
+                        cout << " P200" << setw(4) << "= " << changeTwoHund << endl;
+                        change -=(changeTwoHund*200);
+                    }
+
+                }
+                if(100<=change)
+                {
+                    changeOneHund = change/100;
+                    if(regOneHund<=changeOneHund)
+                    {
+                        cout << " P100" << setw(4) << "= " << regOneHund << endl;
+                        change -=(regOneHund*100);
+                    }
+                    else
+                    {
+                        cout << " P100" << setw(4) << "= " << changeOneHund << endl;
+                        change -=(changeOneHund*100);
+                    }
+                }
+                if(50<=change)
+                {
+                    changeFifty = change/50;
+                    if(regFifty<=changeFifty)
+                    {
+                        cout << " P50" << setw(5) << "= " << regFifty << endl;
+                        change -=(regFifty*50);
+                    }
+                    else
+                    {
+                        cout << " P50" << setw(5) << "= " << changeFifty << endl;
+                        change -=(changeFifty*50);
+                    }
+
+                }
+                if(20<=change)
+                {
+                    changeTwenty = change/20;
+                    if(regTwenty<=changeTwenty)
+                    {
+                        cout << " P20" << setw(5) << "= " << regTwenty << endl;
+                        change -=(regTwenty*20);
+                    }
+                    else
+                    {
+                        cout << " P20" << setw(5) << "= " << changeTwenty << endl;
+                        change -=(changeTwenty*20);
+                    }
+                }
+                if(10<=change)
+                {
+                    changeTen = change/10;
+                    if(regTen<=changeTen)
+                    {
+                        cout << " P10" << setw(5) << "= " << regTen << endl;
+                        change -=(regTen*10);
+                    }
+                    else
+                    {
+                        cout << " P10" << setw(5) << "= " << changeTen << endl;
+                        change -=(changeTen*10);
+                    }
+                }
+                if(5<=change)
+                {
+                    changeFive = change/5;
+                    if(regFive<=changeFive)
+                    {
+                        cout << " P5" << setw(6) << "= " << regFive << endl;
+                        change -=(regFive*5);
+                    }
+                    else
+                    {
+                        cout << " P5" << setw(6) << "= " << changeFive << endl;
+                        change -=(changeFive*5);
+                    }
+                }
+                if(1<=change)
+                {
+                    changeOne = change/1;
+                    if(regOne<=changeOne)
+                    {
+                        cout << " P1" << setw(6) << "= " << regOne << endl;
+                    }
+                    else
+                    {
+                        cout << " P1" << setw(6) << "= " << changeOne << endl;
+                    }
+                }
+            }
+        }
+        else
+        {
+            cout << "\n Breakdown for change is = " << endl;
+
+            if(1000<=change)
+            {
+                changeThou = change/1000;
+                if(regThou<=changeThou)
+                {
+                    cout << "\n P1000" << setw(3) << "= " << regThou << endl;
+                    change -=(regThou*1000);
+                }
+                else
+                {
+                    cout << "\n P1000" << setw(3) << "= " << changeThou << endl;
+                    change -=(changeThou*1000);
+                }
+            }
+            if(500<=change)
+            {
+                changeFiveHund = change/500;
+                if(regFiveHund<=changeFiveHund)
+                {
+                    cout << " P500" << setw(4) << "= " << regFiveHund << endl;
+                    change -=(regFiveHund*500);
+                }
+                else
+                {
+                    cout << " P500" << setw(4) << "= " << changeFiveHund << endl;
+                    change -=(changeFiveHund*500);
+                }
+            }
+            if(200<=change)
+            {
+                changeTwoHund = change/200;
+                if(regTwoHund<=changeTwoHund)
+                {
+                    cout << " P200" << setw(4) << "= " << regTwoHund << endl;
+                    change -=(regTwoHund*200);
+                }
+                else
+                {
+                    cout << " P200" << setw(4) << "= " << changeTwoHund << endl;
+                    change -=(changeTwoHund*200);
+                }
+
+            }
+            if(100<=change)
+            {
+                changeOneHund = change/100;
+                if(regOneHund<=changeOneHund)
+                {
+                    cout << " P100" << setw(4) << "= " << regOneHund << endl;
+                    change -=(regOneHund*100);
+                }
+                else
+                {
+                    cout << " P100" << setw(4) << "= " << changeOneHund << endl;
+                    change -=(changeOneHund*100);
+                }
+            }
+            if(50<=change)
+            {
+                changeFifty = change/50;
+                if(regFifty<=changeFifty)
+                {
+                    cout << " P50" << setw(5) << "= " << regFifty << endl;
+                    change -=(regFifty*50);
+                }
+                else
+                {
+                    cout << " P50" << setw(5) << "= " << changeFifty << endl;
+                    change -=(changeFifty*50);
+                }
+
+            }
+            if(20<=change)
+            {
+                changeTwenty = change/20;
+                if(regTwenty<=changeTwenty)
+                {
+                    cout << " P20" << setw(5) << "= " << regTwenty << endl;
+                    change -=(regTwenty*20);
+                }
+                else
+                {
+                    cout << " P20" << setw(5) << "= " << changeTwenty << endl;
+                    change -=(changeTwenty*20);
+                }
+            }
+            if(10<=change)
+            {
+                changeTen = change/10;
+                if(regTen<=changeTen)
+                {
+                    cout << " P10" << setw(5) << "= " << regTen << endl;
+                    change -=(regTen*10);
+                }
+                else
+                {
+                    cout << " P10" << setw(5) << "= " << changeTen << endl;
+                    change -=(changeTen*10);
+                }
+            }
+            if(5<=change)
+            {
+                changeFive = change/5;
+                if(regFive<=changeFive)
+                {
+                    cout << " P5" << setw(6) << "= " << regFive << endl;
+                    change -=(regFive*5);
+                }
+                else
+                {
+                    cout << " P5" << setw(6) << "= " << changeFive << endl;
+                    change -=(changeFive*5);
+                }
+            }
+            if(1<=change)
+            {
+                changeOne = change/1;
+                if(regOne<=changeOne)
+                {
+                    cout << " P1" << setw(6) << "= " << regOne << endl;
+                }
+                else
+                {
+                    cout << " P1" << setw(6) << "= " << changeOne << endl;
+                }
+            }
+        }
     }
 
     getch();
